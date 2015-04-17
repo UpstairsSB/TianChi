@@ -24,3 +24,7 @@ featureExtractPath=r"D:\TianChi\TrainWorkSpace\b_FeatureExtract"
 
 trainsetTempPath=r"D:\TianChi\TrainWorkSpace\c_TrainSet\temp"
 trainsetOutputPath=r"D:\TianChi\TrainWorkSpace\c_TrainSet"
+
+temp_predictsetPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\temp_predictset"
+temp_featuresetPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\temp_featureset"
+predictsetPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset"
