@@ -33,10 +33,10 @@ def ItemWantedFilter(sourceDataFile,filterFile,outputFile):
         print(count)
         
         templinedata=templinedata.strip()
-        if itemWantedDict.__contains__(templinedata.split(",")[1]):
+        if itemWantedDict.__contains__(templinedata.split("\t")[0].split("|")[1]):
             outputWriter.write(templinedata+"\n")
         templinedata=sourceDataReader.readline()
-
-ItemWantedFilter(r"D:\TianChi\TrainWorkSpace\test\test.csv",r"D:\TianChi\TrainWorkSpace\test\filter.csv", r"D:\TianChi\TrainWorkSpace\test\result.csv")
+if __name__=="__main__":
+    ItemWantedFilter(r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\20141212-20141218_predictset.csv",r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv", r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\predictset.csv")
     
     

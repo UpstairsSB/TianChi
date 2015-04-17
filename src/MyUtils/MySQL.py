@@ -51,6 +51,14 @@ def OutputTo3(Result,outputPath,*tempsplitor):
         tempout+=(tempdata[0]+"|"+tempdata[1]+"|"+tempdata[2]+splitor+str(tempdata[3])+splitor)
         outFile.write(tempout+"\n")
     outFile.close()
+#把tempPredictset的结果写入文档
+def OutputTo5(Result,outputPath):
+    outFile=open(outputPath,'w+')
+    for tempdata in Result:
+        tempout=""
+        tempout="|".join(tempdata)
+        outFile.write(tempout+"\n")
+    outFile.close()
     
 def getData(SQL):
     conn=Connect()
