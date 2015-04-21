@@ -1,14 +1,14 @@
 # coding=utf-8
 '''
-Created on 2015年4月13日
-Creatd at 2015年4月13日 下午1:50:21
+Created on 2015年4月19日
+
 @author: zhanghb   mail:zhb_bupt@163.com
 '''
 import Conf
 from MyUtils import MySQL
 from MyUtils.getDaysFromString import getDaysString
-def userBuyCartRate(dateScope,outputPath):
-    featureSid="3"
+def GaoCateItemNum(dateScope,outputPath):
+    featureSid="1001"
 #     outputPath=Conf.featureExtractPath+"/"+outputName
     dateString=getDaysString(dateScope)
     SQL=r"""
@@ -23,4 +23,5 @@ def userBuyCartRate(dateScope,outputPath):
     MySQL.OutputTo(Result, outputPath,featureSid)
 #以下为测试代码
 if __name__=="__main__":
-    userBuyCartRate("20141122-20141127",r"\1122_1127\userBuyCartRate.csv")
+    outputPath=Conf.featureExtractPath+"/"+"test/GaoCateItemNum.csv"
+    GaoCateItemNum("20141205-20141211",outputPath)

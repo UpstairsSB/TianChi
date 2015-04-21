@@ -4,7 +4,12 @@ Created on 2015年4月15日
 Creatd at 2015年4月15日 下午3:20:06
 @author: zhanghb   mail:zhb_bupt@163.com
 '''
-def ItemWantedFilter(sourceDataFile,filterFile,outputFile):
+import Conf 
+def ItemWantedFilter(sourceDataFile,filterFile,outputFile,itemLocal,*spiler):
+    tempsplier="|"
+    if spiler!=():
+        tempsplier=spiler[0]
+    
     itemWantedDict={}
     sourceDataReader=open(sourceDataFile,"r")
     filterReader=open(filterFile,"r")
@@ -33,10 +38,20 @@ def ItemWantedFilter(sourceDataFile,filterFile,outputFile):
         print(count)
         
         templinedata=templinedata.strip()
-        if itemWantedDict.__contains__(templinedata.split("\t")[0].split("|")[1]):
+        
+#         temp=templinedata.split("\t")[0].split(tempsplier)[itemLocal]
+        
+        if itemWantedDict.__contains__(templinedata.split("\t")[0].split(tempsplier)[itemLocal]):
             outputWriter.write(templinedata+"\n")
         templinedata=sourceDataReader.readline()
 if __name__=="__main__":
-    ItemWantedFilter(r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\20141212-20141218_predictset.csv",r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv", r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\predictset.csv")
-    
+    itemWantedPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv"
+    #ItemWantedFilter(r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\20141212-20141218_predictset.csv",r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv", r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\predictset.csv")
+#     inputFile=r"D:\TianChi\TrainWorkSpace\g_Strategy\itemBuyCartRate.csv"
+#     outputFile=r"D:\TianChi\TrainWorkSpace\g_Strategy\itemBuyCartRate_afterFliter.csv"
+#     ItemWantedFilter(inputFile,itemWantedPath,outputFile,0,",")
+#     
+    inputFile=Conf.StrategyPath+"\\"+r"20141218_cart.csv"
+    outputFile=Conf.StrategyPath+"\\"+r"20141218_cart_ItemWanted.csv"
+    ItemWantedFilter(inputFile,itemWantedPath,outputFile,1,",")
     

@@ -22,5 +22,6 @@ def itemBuyClickRate(dateScope,outputPath):
     Result=MySQL.getData(SQL)
     MySQL.OutputTo(Result, outputPath,featureSid)
 #以下为测试代码
-#itemBuyClickRate("20141122-20141127",r"\1122_1127\itemBuyClickRate.csv")
+if __name__=="__main__":
+    itemBuyClickRate("20141122-20141127",r"\1122_1127\itemBuyClickRate.csv")
     

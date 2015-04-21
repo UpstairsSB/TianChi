@@ -58,4 +58,5 @@ def FeatureGenerater(dateScope,outputPath):
 
 
 #以下为测试代码
-# FeatureGenerater("20141122-20141127")
+if __name__=="__main__":
+    FeatureGenerater("20141122-20141127")

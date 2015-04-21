@@ -22,4 +22,5 @@ def userBuyTotalRate(dateScope,outputPath):
     Result=MySQL.getData(SQL)
     MySQL.OutputTo(Result, outputPath,featureSid)
 #以下为测试代码
-#userBuyTotalRate("20141122-20141127",r"\1122_1127\userBuyTotalRate.csv")
+if __name__=="__main__":
+    userBuyTotalRate("20141122-20141127",r"\1122_1127\userBuyTotalRate.csv")

@@ -85,3 +85,16 @@ def featureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,C
         tempout=tempout.strip("\t")+"\n"
         trainsetWritter.write(tempout)
         tempLineData=sourceFileReader.readline()
+        
+#以下为测试代码
+#featureName=["400","401","402","403"]
+# tempTrainssetFile=Conf.trainsetTempPath+"\\"+"tempTrainset.csv"
+# getTrainset("20141128",tempTrainssetFile)
+SourceFilePath=r"D:\TianChi\TrainWorkSpace\Gao\temp_predictset"+"\\"+"20141212-20141218_tempPredictset.csv"
+FeaturePath=r"D:\TianChi\TrainWorkSpace\Gao\temp_featureset"
+userFeatureList=["userBuyClickRate","userBuyFavRate","userBuyCartRate","userBuyTotalRate","GaoCateItemNum"]
+itemFeatureList=["itemBuyClickRate","itemBuyFavRate","itemBuyCartRate","itemBuyTotalRate","itemVisitPerDay"]
+CateFeatureList=["CateBuyClickRate","CateBuyFavRate","CateBuyCartRate","CateBuyTotalRate","CateVisitPerDay"]
+DemandFeatureList=["DemandFeature"]
+outputPath=r"D:\TianChi\TrainWorkSpace\Gao\20141212-20141218.csv"
+featureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath)

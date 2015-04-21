@@ -7,14 +7,23 @@ Creatd at 2015年4月14日 上午11:05:19
 from MyUtils import MySQL
 import Conf
 from MyUtils.getDaysFromString import getDaysString
-def getTrainset(dateScope,tempTrainsetFile):
+def getTrainset(dateScope,labeldate,tempTrainsetFile):
 #     outputPath=Conf.trainsetTempPath+"\\"+outputName
     dateString=getDaysString(dateScope)
-    SQL=r"select "\
-        +"user_id, item_id,item_category,if(behavior_type=4,1,0) "\
-        +"from useritem "\
-        +"where date_format(usertime,'%%Y%%m%%d') in (%s) "%(dateString)\
-        +"group by user_id, item_id,item_category; "
+    SQL=r"""
+        (select
+        user_id, item_id,item_category
+        from useritem
+        where behavior_type=4 and date_format(usertime,'%%Y%%m%%d') in (%s)
+        group by user_id, item_id,item_category) a
+        left join
+        (select
+        user_id, item_id,item_category
+        from useritem
+        where behavior_type=4 and date_format(usertime,'%%Y%%m%%d') in (%s)
+        group by user_id, item_id,item_category) b
+        ; 
+        """%(dateString,labeldate)
     Result=MySQL.getData(SQL)
     MySQL.OutputTo3(Result,tempTrainsetFile)
 def FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath):
@@ -106,3 +115,13 @@ def FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,C
 # DemandFeatureList=["DemandFeature"]
 # outputPath=Conf.trainsetOutputPath+"\\"+"1128_Trainset.csv"
 # FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath)
+
+if __name__=="__main__":
+    SourceFilePath=r"D:\TianChi\TrainWorkSpace\Gao\temp_predictset\20141212_tempTrainset.csv"
+    FeaturePath=r"D:\TianChi\TrainWorkSpace\Gao\temp_featureset"
+    userFeatureList=["userBuyClickRate","userBuyFavRate","userBuyCartRate","userBuyTotalRate","GaoCateItemNum"]
+    itemFeatureList=["itemBuyClickRate","itemBuyFavRate","itemBuyCartRate","itemBuyTotalRate","itemVisitPerDay"]
+    CateFeatureList=["CateBuyClickRate","CateBuyFavRate","CateBuyCartRate","CateBuyTotalRate","CateVisitPerDay"]
+    DemandFeatureList=["DemandFeature"]
+    outputPath=r"D:\TianChi\TrainWorkSpace\Gao\trainset\\"+"1212_Trainset.csv"
+    FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath)

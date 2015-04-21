@@ -14,7 +14,7 @@ def itemVisitPerDay(dateScope,outputPath):
     daysNum=str(getDaysNum(dateScope))
     SQL=r"""
         select 
-        item_id,ceil(100*(count(distinct user_id)/%s)) as VisitPerDay
+        item_id,ceil((count(distinct user_id)/%s)) as VisitPerDay
         from useritem
         where behavior_type in (1,2,3,4) and date_format(usertime,'%%Y%%m%%d') in (%s)
         group by item_id
@@ -23,4 +23,5 @@ def itemVisitPerDay(dateScope,outputPath):
     Result=MySQL.getData(SQL)
     MySQL.OutputTo(Result, outputPath,featureSid)
 #以下为测试代码
-#itemVisitPerDay("20141122-20141127",r"\1122_1127\itemVisitPerDay.csv")
+if __name__=="__main__":
+    itemVisitPerDay("20141122-20141127",r"\1122_1127\itemVisitPerDay.csv")

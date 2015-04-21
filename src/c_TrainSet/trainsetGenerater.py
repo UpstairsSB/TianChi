@@ -48,5 +48,6 @@ def trainsetGenerater_2(dateScope,dateDelta,*dateSkip):
         trainsetGenerater_1(tempdateScope[0],tempdateScope[1])
     
 #以下为测试数据
-#trainsetGenerater_1("20141122-20141127","20141128")
-trainsetGenerater_2("20141118-20141218",7,1)
+if __name__=="__main__":
+    #trainsetGenerater_1("20141122-20141127","20141128")
+    trainsetGenerater_2("20141118-20141125",7,1)

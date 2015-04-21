@@ -37,7 +37,7 @@ def getDays (dateScope):
     i=datetime.timedelta(days=0)
     days=[]
     while i<((dateEnd-dateStart+datetime.timedelta(days=1))):
-        days.append((dateStart+i).strftime('%Y%m%d'))
+        days.append('"'+(dateStart+i).strftime('%Y%m%d')+'"')
         i+=datetime.timedelta(days=1)
     return days
 def getDaysNum (dateScope):

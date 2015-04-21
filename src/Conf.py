@@ -28,3 +28,7 @@ trainsetOutputPath=r"D:\TianChi\TrainWorkSpace\c_TrainSet"
 temp_predictsetPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\temp_predictset"
 temp_featuresetPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\temp_featureset"
 predictsetPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset"
+
+ModelPath=r"D:\TianChi\TrainWorkSpace\d_Model"
+
+StrategyPath=r"D:\TianChi\TrainWorkSpace\g_Strategy"

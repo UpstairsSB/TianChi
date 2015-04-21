@@ -8,10 +8,10 @@ def handler(inputpath,outputpath):
     FileReader=open(inputpath,"r")
     tempLineData=""
     tempLineData=FileReader.readline()
-    FileWriter=open(outputpath,"w")
+    FileWriter=open(outputpath,"w",-1,"utf-8")
     
     count=0
-    
+    FileWriter.write("user_id"+","+"item_id"+"\n")
     while(tempLineData!=""):
         
         count+=1
@@ -26,7 +26,7 @@ def handler(inputpath,outputpath):
     FileWriter.close
 #以下为测试代码
 if __name__=="__main__":
-    inputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\predictset.csv"
-    outputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\uploadtemp.csv"
+    inputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\20150419_1.csv"
+    outputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\20150419_1_o.csv"
     handler(inputpath,outputpath)
     

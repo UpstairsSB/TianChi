@@ -22,4 +22,5 @@ def CateBuyCartRate(dateScope,outputPath):
     Result=MySQL.getData(SQL)
     MySQL.OutputTo(Result, outputPath,featureSid)
 #以下为测试代码
-# CateBuyCartRate("20141122-20141127",r"\1122_1127\CateBuyCartRate.csv")
+if __name__=="__main__":
+    CateBuyCartRate("20141122-20141127",r"\1122_1127\CateBuyCartRate.csv")
