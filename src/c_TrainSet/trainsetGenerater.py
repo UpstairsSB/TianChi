@@ -32,7 +32,7 @@ def trainsetGenerater_1(dateScope,labelDate):
     #生成特征
     FeatureGenerater(dateScope,featurePath)
     #生成labelDate的观测数据
-    getTrainset(labelDate,tempTrainsetFile)
+    getTrainset(dateScope,labelDate,tempTrainsetFile)
     userFeatureList=["userBuyClickRate","userBuyFavRate","userBuyCartRate","userBuyTotalRate"]
     itemFeatureList=["itemBuyClickRate","itemBuyFavRate","itemBuyCartRate","itemBuyTotalRate","itemVisitPerDay"]
     CateFeatureList=["CateBuyClickRate","CateBuyFavRate","CateBuyCartRate","CateBuyTotalRate","CateVisitPerDay"]
@@ -50,4 +50,6 @@ def trainsetGenerater_2(dateScope,dateDelta,*dateSkip):
 #以下为测试数据
 if __name__=="__main__":
     #trainsetGenerater_1("20141122-20141127","20141128")
-    trainsetGenerater_2("20141118-20141125",7,1)
+    #trainsetGenerater_2("20141206-20141218",7,1)
+    trainsetGenerater_2("20141211-20141218",7,1)
+    

@@ -46,12 +46,12 @@ def ItemWantedFilter(sourceDataFile,filterFile,outputFile,itemLocal,*spiler):
         templinedata=sourceDataReader.readline()
 if __name__=="__main__":
     itemWantedPath=r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv"
-    #ItemWantedFilter(r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\20141212-20141218_predictset.csv",r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv", r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\predictset.csv")
+    ItemWantedFilter(r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\20141212-20141218_predictset.csv",r"D:\TianChi\TrainWorkSpace\e_PredictSet\ItemWantedFilter.csv", r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\predictset.csv",1)
 #     inputFile=r"D:\TianChi\TrainWorkSpace\g_Strategy\itemBuyCartRate.csv"
 #     outputFile=r"D:\TianChi\TrainWorkSpace\g_Strategy\itemBuyCartRate_afterFliter.csv"
 #     ItemWantedFilter(inputFile,itemWantedPath,outputFile,0,",")
 #     
-    inputFile=Conf.StrategyPath+"\\"+r"20141218_cart.csv"
-    outputFile=Conf.StrategyPath+"\\"+r"20141218_cart_ItemWanted.csv"
-    ItemWantedFilter(inputFile,itemWantedPath,outputFile,1,",")
-    
+#     inputFile=Conf.StrategyPath+"\\"+r"20141218_cart.csv"
+#     outputFile=Conf.StrategyPath+"\\"+r"20141218_cart_ItemWanted.csv"
+#     ItemWantedFilter(inputFile,itemWantedPath,outputFile,1,",")
+#     

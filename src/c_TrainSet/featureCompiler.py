@@ -11,19 +11,23 @@ def getTrainset(dateScope,labeldate,tempTrainsetFile):
 #     outputPath=Conf.trainsetTempPath+"\\"+outputName
     dateString=getDaysString(dateScope)
     SQL=r"""
+        select a.user_id,a.item_id,a.item_category,if(b.user_id is null,0,1)
+        from
         (select
-        user_id, item_id,item_category
+        distinct user_id, item_id,item_category
         from useritem
-        where behavior_type=4 and date_format(usertime,'%%Y%%m%%d') in (%s)
+        where date_format(usertime,'%%Y%%m%%d') in (%s)
         group by user_id, item_id,item_category) a
         left join
         (select
-        user_id, item_id,item_category
+        distinct user_id, item_id,item_category
         from useritem
         where behavior_type=4 and date_format(usertime,'%%Y%%m%%d') in (%s)
         group by user_id, item_id,item_category) b
+        on a.user_id=b.user_id and a.item_id=b.item_id
         ; 
         """%(dateString,labeldate)
+    #print(SQL)
     Result=MySQL.getData(SQL)
     MySQL.OutputTo3(Result,tempTrainsetFile)
 def FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath):
@@ -117,11 +121,13 @@ def FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,C
 # FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath)
 
 if __name__=="__main__":
-    SourceFilePath=r"D:\TianChi\TrainWorkSpace\Gao\temp_predictset\20141212_tempTrainset.csv"
-    FeaturePath=r"D:\TianChi\TrainWorkSpace\Gao\temp_featureset"
-    userFeatureList=["userBuyClickRate","userBuyFavRate","userBuyCartRate","userBuyTotalRate","GaoCateItemNum"]
+    tempTrainssetFile=Conf.trainsetTempPath+"\\"+"20141218_tempTrainset.csv"
+    getTrainset("20141211-20141217",'"20141218"',tempTrainssetFile)
+    SourceFilePath=r"D:\TianChi\TrainWorkSpace\c_TrainSet\temp\20141218_tempTrainset.csv"
+    FeaturePath=r"D:\TianChi\TrainWorkSpace\b_FeatureExtract\20141211-20141217"
+    userFeatureList=["userBuyClickRate","userBuyFavRate","userBuyCartRate","userBuyTotalRate"]
     itemFeatureList=["itemBuyClickRate","itemBuyFavRate","itemBuyCartRate","itemBuyTotalRate","itemVisitPerDay"]
     CateFeatureList=["CateBuyClickRate","CateBuyFavRate","CateBuyCartRate","CateBuyTotalRate","CateVisitPerDay"]
     DemandFeatureList=["DemandFeature"]
-    outputPath=r"D:\TianChi\TrainWorkSpace\Gao\trainset\\"+"1212_Trainset.csv"
+    outputPath=r"D:\TianChi\TrainWorkSpace\c_TrainSet"+"\\"+"20141211-20141217_20141218_Trainset.csv"
     FeatureCompiler(SourceFilePath,FeaturePath,userFeatureList,itemFeatureList,CateFeatureList,DemandFeatureList,outputPath)

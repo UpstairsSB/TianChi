@@ -23,10 +23,11 @@ def handler(inputpath,outputpath):
         tempout+=(templist[0]+","+templist[1]+"\n")
         FileWriter.write(tempout)
         tempLineData=FileReader.readline()
-    FileWriter.close
+    FileReader.close()
+    FileWriter.close()
 #以下为测试代码
 if __name__=="__main__":
-    inputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\20150419_1.csv"
-    outputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\20150419_1_o.csv"
+    inputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\temp\20150422_03.csv"
+    outputpath=r"D:\TianChi\TrainWorkSpace\f_PredictResult\temp\20150422_03_o.csv"
     handler(inputpath,outputpath)
     

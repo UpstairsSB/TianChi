@@ -90,11 +90,11 @@ def getPredictResult_2(ModelFileDict,predictsetFile,predictResultFile):
     predictResultFileWriter.close()
 #以下为测试代码
 if __name__=="__main__":
-    ModelFile=r"D:\TianChi\TrainWorkSpace\d_Model\model_0417_04_01.csv"
+    ModelFile=r"D:\TianChi\TrainWorkSpace\d_Model\model_0422_f.csv"
     predictsetFile=r"D:\TianChi\TrainWorkSpace\e_PredictSet\predictset\predictset.csv"
-    predictResultFile=r"D:\TianChi\TrainWorkSpace\f_PredictResult\predictsetResult_4.csv"
-    #getPredictResult(ModelFile,predictsetFile,predictResultFile)
+    predictResultFile=r"D:\TianChi\TrainWorkSpace\f_PredictResult\predictsetResult_20150422.csv"
+    getPredictResult(ModelFile,predictsetFile,predictResultFile)
               
-    ModelFileDict={"Model1":0.817,"Model2":0.813,"Model3":0.748,"Model4":0.775} 
-    getPredictResult_2(ModelFileDict,predictsetFile,predictResultFile)   
+    #ModelFileDict={"Model1":0.817,"Model2":0.813,"Model3":0.748,"Model4":0.775} 
+    #getPredictResult_2(ModelFileDict,predictsetFile,predictResultFile)   
     

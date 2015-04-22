@@ -65,5 +65,5 @@ if __name__=="__main__":
     dateScope="20141212-20141218"
     tempPredictsetFile=Conf.temp_predictsetPath+"\\"+dateScope+"_tempPredictset.csv"
     #gettempPredictset(dateScope,tempPredictsetFile)
-    #predictsetGenerater(dateScope)
-    predictsetGenerater_1(dateScope)
+    predictsetGenerater(dateScope)
+    #predictsetGenerater_1(dateScope)
